@@ -144,6 +144,8 @@ body {
     font-weight: 700;
     line-height: 1.2;
     margin-bottom: 1.5rem;
+    overflow-wrap: anywhere;
+    word-wrap: break-word;
 }
 
 .highlight {
@@ -154,15 +156,13 @@ body {
 }
 
 .typing-text {
-    display: inline-block;
+    display: block;
+    margin-top: 0.35rem;
     border-right: 3px solid #06b6d4;
-    animation: typing 3s steps(20) infinite, blink 1s infinite;
-}
-
-@keyframes typing {
-    0% { width: 0; }
-    50% { width: 100%; }
-    100% { width: 0; }
+    animation: blink 1s step-end infinite;
+    white-space: normal;
+    overflow: visible;
+    max-width: 100%;
 }
 
 @keyframes blink {
@@ -198,10 +198,12 @@ body {
 .btn-primary {
     background: #06b6d4;
     color: #0a0e1a;
+    border-color: #06b6d4;
 }
 
 .btn-primary:hover {
     background: #0891b2;
+    border-color: #0891b2;
     transform: translateY(-2px);
     box-shadow: 0 10px 25px rgba(6, 182, 212, 0.4);
 }
@@ -209,11 +211,11 @@ body {
 .btn-secondary {
     background: transparent;
     color: white;
-    border-color: rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.45);
 }
 
 .btn-secondary:hover {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.08);
     color: #06b6d4;
     border-color: #06b6d4;
     transform: translateY(-2px);
@@ -299,6 +301,14 @@ section {
     border-radius: 2px;
 }
 
+/* Light sections: high-contrast headings & body text */
+.about .section-title,
+.skills .section-title,
+.volunteering .section-title,
+.certifications .section-title {
+    color: #1A1A1A;
+}
+
 /* About Section */
 .about {
     background: #F9FAFB;
@@ -315,7 +325,7 @@ section {
     font-size: 1.1rem;
     line-height: 1.8;
     margin-bottom: 2rem;
-    color: #94a3b8;
+    color: #1A1A1A;
 }
 
 .about-stats {
@@ -565,10 +575,11 @@ section {
     font-size: 2rem;
     font-weight: 700;
     color: #f1f5f9;
-    margin-bottom: 2rem;
+    margin: 0 auto 2rem;
     text-align: center;
     position: relative;
     padding-bottom: 1rem;
+    width: 100%;
 }
 
 .subsection-title::after {
@@ -842,10 +853,15 @@ section {
     background: #F9FAFB;
 }
 
+.certifications .section-title {
+    margin-bottom: 1.5rem;
+}
+
 .cert-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1.5rem;
+    margin-top: 0.5rem;
 }
 
 .cert-item {
@@ -909,7 +925,7 @@ section {
     width: 30px;
 }
 
-.contact-item h4 {
+.contact-item h3 {
     font-size: 1.1rem;
     font-weight: 700;
     color: #f1f5f9;
@@ -941,6 +957,14 @@ section {
 
 .form-group {
     margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #e2e8f0;
 }
 
 .form-group input,

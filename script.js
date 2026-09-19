@@ -157,27 +157,23 @@ const contactForm = document.querySelector('.contact-form form');
 if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        
-        // Get form data
-        const formData = new FormData(contactForm);
-        const name = contactForm.querySelector('input[type="text"]').value;
-        const email = contactForm.querySelector('input[type="email"]').value;
-        const subject = contactForm.querySelectorAll('input[type="text"]')[1].value;
-        const message = contactForm.querySelector('textarea').value;
-        
-        // Simple validation
+
+        const name = contactForm.querySelector('#contact-name')?.value.trim();
+        const email = contactForm.querySelector('#contact-email')?.value.trim();
+        const subject = contactForm.querySelector('#contact-subject')?.value.trim();
+        const message = contactForm.querySelector('#contact-message')?.value.trim();
+
         if (!name || !email || !subject || !message) {
             alert('Please fill in all fields');
             return;
         }
-        
-        // Simulate form submission
+
         const submitBtn = contactForm.querySelector('button[type="submit"]');
         const originalText = submitBtn.textContent;
-        
+
         submitBtn.textContent = 'Sending...';
         submitBtn.disabled = true;
-        
+
         setTimeout(() => {
             alert('Thank you for your message! I\'ll get back to you soon.');
             contactForm.reset();
